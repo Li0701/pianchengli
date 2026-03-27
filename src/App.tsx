@@ -5,15 +5,13 @@
 
 import { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'motion/react';
-import { ITINERARY_DATA, DayItinerary, TimelineItem } from './data';
+import { ITINERARY_DATA, GOURMET_DATA, INFO_DATA, DayItinerary, TimelineItem, GourmetSpot, InfoItem } from './data';
 
 type Page = 'home' | 'day' | 'gourmet' | 'info';
 
 export default function App() {
   const [currentPage, setCurrentPage] = useState<Page>('home');
   const [selectedDay, setSelectedDay] = useState<string | null>(null);
-  const [krwAmount, setKrwAmount] = useState<number>(10000);
-  const exchangeRate = 0.022;
 
   const navigateToDay = (dayId: string) => {
     setSelectedDay(dayId);
@@ -118,6 +116,33 @@ function NavItem({ icon, label, active, onClick }: { icon: string, label: string
 }
 
 function HomeView({ onSelectDay, onNavigate }: { onSelectDay: (id: string) => void, onNavigate: (page: Page) => void }) {
+  const [krw, setKrw] = useState<string>("10000");
+  const [twd, setTwd] = useState<string>("220");
+  const rate = 0.022;
+
+  const handleKrwChange = (val: string) => {
+    setKrw(val);
+    const num = parseFloat(val);
+    if (!isNaN(num)) {
+      setTwd((num * rate).toFixed(0));
+    } else {
+      setTwd("");
+    }
+  };
+
+  const handleTwdChange = (val: string) => {
+    setTwd(val);
+    const num = parseFloat(val);
+    if (!isNaN(num)) {
+      setKrw((num / rate).toFixed(0));
+    } else {
+      setKrw("");
+    }
+  };
+
+  const krwPresets = ["1000", "5000", "10000", "50000"];
+  const twdPresets = ["100", "500", "1000", "2000"];
+
   return (
     <div className="space-y-10">
       <section className="relative group">
@@ -161,37 +186,47 @@ function HomeView({ onSelectDay, onNavigate }: { onSelectDay: (id: string) => vo
         </div>
       </section>
 
-      <section className="grid grid-cols-1 md:grid-cols-2 gap-6">
-        <button 
-          onClick={() => onNavigate('gourmet')}
-          className="group relative overflow-hidden rounded-3xl h-48 shadow-md"
-        >
-          <img 
-            className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110" 
-            src="https://lh3.googleusercontent.com/aida-public/AB6AXuBQKxgBa4RQI8gGllUkHubwfaiGGFbO1YiKY8EqLsNp4eXoceMjiwb10nbWxP30mtFJxBmB5qO5lKKeMqzw7q8Iui67hljwwlc8OERneE5Zt2TIUF0ZiEn7Yw7yz5ZVKhFlisnqUZT6p_0QIdlP6cSEErGer0YJkkanQKH7kjkmbbeT_GN_Ccqz9Y5NDz7wnvBeq9zmVB3s44dTyJXE1ahqynzwiPTQDhhgvsCff1KVu6x8L7GDBqFIRhccfMwvFQYkWkhfPVVNvNJY" 
-            alt="Gourmet"
-            referrerPolicy="no-referrer"
-          />
-          <div className="absolute inset-0 bg-black/30 flex flex-col justify-end p-6 text-white text-left">
-            <h4 className="text-xl font-bold">在地美食指南</h4>
-            <p className="text-xs opacity-80">Local Gourmet Guide</p>
-          </div>
-        </button>
-        <button 
-          onClick={() => onNavigate('info')}
-          className="group relative overflow-hidden rounded-3xl h-48 shadow-md"
-        >
-          <img 
-            className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110" 
-            src="https://lh3.googleusercontent.com/aida-public/AB6AXuDxV08gf7b_er3kONtPCYxdXZwfARGzIoiMI8kn5bcLqyQ7FPleFNxvfRmOCpe0CkFayc4O1d1Lox1itOqqihxynH6ycDRQSTcpubwCFt6UwxbGokH6XVDLn0t-4l9Xxhay1JE8cNII3y4ce3fUHSn5Mb7W7nNyYoWf6Q0iemCdQZNf-MasMEtajRpfz6co5VmjT_eQDu6a_4fiyVNOWvqf5pNQ3R9oYUvIkjcmi_W3FGFxz7NkC8tyUnpqB0AOfNYvQ2Tu1mh4Ik--" 
-            alt="Info"
-            referrerPolicy="no-referrer"
-          />
-          <div className="absolute inset-0 bg-black/30 flex flex-col justify-end p-6 text-white text-left">
-            <h4 className="text-xl font-bold">實用旅遊資訊</h4>
-            <p className="text-xs opacity-80">Practical Travel Info</p>
-          </div>
-        </button>
+      <section className="space-y-6">
+        <div className="flex items-center justify-between">
+          <h3 className="text-2xl font-bold font-['Plus_Jakarta_Sans'] text-[#005ea3]">精選推薦</h3>
+          <button onClick={() => onNavigate('gourmet')} className="text-sm font-bold text-[#a13a0f] flex items-center gap-1">
+            查看全部 <span className="material-symbols-outlined text-sm">arrow_forward</span>
+          </button>
+        </div>
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+          <button 
+            onClick={() => onNavigate('gourmet')}
+            className="group relative overflow-hidden rounded-3xl h-64 shadow-md"
+          >
+            <img 
+              className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110" 
+              src={GOURMET_DATA[0].image} 
+              alt="Gourmet"
+              referrerPolicy="no-referrer"
+            />
+            <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent flex flex-col justify-end p-6 text-white text-left">
+              <span className="bg-[#ffdbcf] text-[#a13a0f] text-[10px] font-bold px-2 py-0.5 rounded w-fit mb-2 uppercase tracking-wider">熱門美食</span>
+              <h4 className="text-2xl font-bold">{GOURMET_DATA[0].title}</h4>
+              <p className="text-sm opacity-80 line-clamp-1">{GOURMET_DATA[0].description}</p>
+            </div>
+          </button>
+          <button 
+            onClick={() => onNavigate('info')}
+            className="group relative overflow-hidden rounded-3xl h-64 shadow-md"
+          >
+            <img 
+              className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110" 
+              src="https://lh3.googleusercontent.com/aida-public/AB6AXuDxV08gf7b_er3kONtPCYxdXZwfARGzIoiMI8kn5bcLqyQ7FPleFNxvfRmOCpe0CkFayc4O1d1Lox1itOqqihxynH6ycDRQSTcpubwCFt6UwxbGokH6XVDLn0t-4l9Xxhay1JE8cNII3y4ce3fUHSn5Mb7W7nNyYoWf6Q0iemCdQZNf-MasMEtajRpfz6co5VmjT_eQDu6a_4fiyVNOWvqf5pNQ3R9oYUvIkjcmi_W3FGFxz7NkC8tyUnpqB0AOfNYvQ2Tu1mh4Ik--" 
+              alt="Info"
+              referrerPolicy="no-referrer"
+            />
+            <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent flex flex-col justify-end p-6 text-white text-left">
+              <span className="bg-[#a1c9ff] text-[#005ea3] text-[10px] font-bold px-2 py-0.5 rounded w-fit mb-2 uppercase tracking-wider">實用資訊</span>
+              <h4 className="text-2xl font-bold">{INFO_DATA[0].title}</h4>
+              <p className="text-sm opacity-80 line-clamp-1">{INFO_DATA[0].content}</p>
+            </div>
+          </button>
+        </div>
       </section>
 
       {/* Currency Converter Section */}
@@ -200,26 +235,73 @@ function HomeView({ onSelectDay, onNavigate }: { onSelectDay: (id: string) => vo
           <span className="material-symbols-outlined text-[#a13a0f]">payments</span>
           <h3 className="text-xl font-bold font-['Plus_Jakarta_Sans']">匯率計算器</h3>
         </div>
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
-          <div className="space-y-4">
-            <div className="relative">
-              <label className="block text-xs font-bold text-[#717783] uppercase mb-2 ml-1">韓元 KRW</label>
-              <input 
-                className="w-full bg-white border-none rounded-2xl py-4 px-6 text-2xl font-bold text-[#005ea3] focus:ring-2 focus:ring-[#a1c9ff] transition-shadow outline-none" 
-                type="number" 
-                defaultValue={10000}
-                onChange={(e) => {
-                  const val = parseFloat(e.target.value);
-                  if (!isNaN(val)) { /* Logic for live conversion could go here */ }
-                }}
-              />
-              <span className="absolute right-6 bottom-4 text-[#717783] font-bold">₩</span>
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 items-start">
+          <div className="space-y-6">
+            <div className="space-y-3">
+              <label className="block text-xs font-bold text-[#717783] uppercase ml-1">韓元 KRW</label>
+              <div className="relative">
+                <input 
+                  className="w-full bg-white border-none rounded-2xl py-4 px-6 text-2xl font-bold text-[#005ea3] focus:ring-2 focus:ring-[#a1c9ff] transition-shadow outline-none" 
+                  type="number" 
+                  value={krw}
+                  onChange={(e) => handleKrwChange(e.target.value)}
+                />
+                <span className="absolute right-6 bottom-4 text-[#717783] font-bold">₩</span>
+              </div>
+              <div className="flex flex-wrap gap-2">
+                {krwPresets.map(val => (
+                  <button 
+                    key={val} 
+                    onClick={() => handleKrwChange(val)}
+                    className="px-3 py-1 bg-white rounded-lg text-xs font-bold text-[#005ea3] hover:bg-[#a1c9ff] transition-colors shadow-sm"
+                  >
+                    {parseInt(val).toLocaleString()}
+                  </button>
+                ))}
+              </div>
+            </div>
+            <div className="space-y-3">
+              <label className="block text-xs font-bold text-[#717783] uppercase ml-1">台幣 TWD</label>
+              <div className="relative">
+                <input 
+                  className="w-full bg-white border-none rounded-2xl py-4 px-6 text-2xl font-bold text-[#a13a0f] focus:ring-2 focus:ring-[#ffdbcf] transition-shadow outline-none" 
+                  type="number" 
+                  value={twd}
+                  onChange={(e) => handleTwdChange(e.target.value)}
+                />
+                <span className="absolute right-6 bottom-4 text-[#717783] font-bold">$</span>
+              </div>
+              <div className="flex flex-wrap gap-2">
+                {twdPresets.map(val => (
+                  <button 
+                    key={val} 
+                    onClick={() => handleTwdChange(val)}
+                    className="px-3 py-1 bg-white rounded-lg text-xs font-bold text-[#a13a0f] hover:bg-[#ffdbcf] transition-colors shadow-sm"
+                  >
+                    {parseInt(val).toLocaleString()}
+                  </button>
+                ))}
+              </div>
             </div>
           </div>
-          <div className="bg-[#f0e1c7] rounded-2xl p-6 flex flex-col justify-center border border-[#c0c7d3]/10">
+          <div className="bg-[#f0e1c7] rounded-2xl p-6 flex flex-col justify-center border border-[#c0c7d3]/10 h-full">
             <p className="text-[#221b0b] font-semibold text-sm mb-2 opacity-70">當前參考匯率</p>
             <p className="text-3xl font-bold text-[#221b0b]">1 KRW = 0.022 TWD</p>
-            <p className="text-xs text-[#221b0b] mt-4 opacity-60">數據更新於 2024.05.20 12:00 PM</p>
+            <div className="mt-6 space-y-2">
+              <div className="flex justify-between text-xs font-bold text-[#221b0b]/60">
+                <span>10,000 KRW</span>
+                <span>≈ 220 TWD</span>
+              </div>
+              <div className="flex justify-between text-xs font-bold text-[#221b0b]/60">
+                <span>50,000 KRW</span>
+                <span>≈ 1,100 TWD</span>
+              </div>
+              <div className="flex justify-between text-xs font-bold text-[#221b0b]/60">
+                <span>100,000 KRW</span>
+                <span>≈ 2,200 TWD</span>
+              </div>
+            </div>
+            <p className="text-[10px] text-[#221b0b] mt-auto pt-6 opacity-60">數據更新於 2024.05.20 12:00 PM</p>
           </div>
         </div>
       </section>
@@ -258,7 +340,11 @@ function DayDetailView({ day, onBack }: { day: DayItinerary, onBack: () => void 
                   {item.type === 'TRANSPORT' ? 'train' : 
                    item.type === 'FLIGHT' ? 'flight' :
                    item.type === 'SHUTTLE' ? 'directions_car' :
-                   item.type === 'LATE NIGHT SNACK' ? 'restaurant' :
+                   item.type === 'FOOD' ? 'restaurant' :
+                   item.type === 'ACTIVITY' ? 'explore' :
+                   item.type === 'SHOPPING' ? 'shopping_bag' :
+                   item.type === 'CAFE' ? 'coffee' :
+                   item.type === 'INFO' ? 'info' :
                    item.type === '住宿' ? 'hotel' : 'location_on'}
                 </span>
               </div>
@@ -277,7 +363,6 @@ function DayDetailView({ day, onBack }: { day: DayItinerary, onBack: () => void 
                     <button 
                       onClick={() => {
                         navigator.clipboard.writeText(item.koreanName!);
-                        // Optional: Add a toast notification here
                       }}
                       className="bg-[#ebeef5] px-2 py-1 rounded text-[10px] flex items-center gap-1 text-[#404752] active:scale-95 transition-transform hover:bg-[#d1d5db]"
                     >
@@ -311,7 +396,10 @@ function DayDetailView({ day, onBack }: { day: DayItinerary, onBack: () => void 
                           <h4 className="font-bold text-[#181c21] text-sm">{opt.name}</h4>
                           <p className="text-xs text-[#404752]">{opt.desc}</p>
                         </div>
-                        <button className="p-2 bg-[#e0e2ea] rounded-full hover:bg-[#a1c9ff] transition-colors">
+                        <button 
+                          onClick={() => navigator.clipboard.writeText(opt.korean)}
+                          className="p-2 bg-[#e0e2ea] rounded-full hover:bg-[#a1c9ff] transition-colors"
+                        >
                           <span className="material-symbols-outlined text-[#005ea3] text-sm">content_copy</span>
                         </button>
                       </div>
@@ -339,37 +427,166 @@ function DayDetailView({ day, onBack }: { day: DayItinerary, onBack: () => void 
 }
 
 function GourmetView() {
+  const [selectedSpot, setSelectedSpot] = useState<GourmetSpot | null>(null);
+
   return (
     <div className="space-y-8">
-      <h2 className="text-3xl font-bold font-['Plus_Jakarta_Sans'] text-[#005ea3]">釜山在地美食指南</h2>
-      <div className="grid grid-cols-1 gap-6">
-        <div className="bg-white p-6 rounded-2xl shadow-sm border-l-4 border-[#a13a0f]">
-          <h3 className="text-xl font-bold mb-2">影島必訪咖啡廳</h3>
-          <p className="text-sm text-[#404752]">精選影島海景咖啡廳，享受悠閒午後。</p>
-        </div>
-        <div className="bg-white p-6 rounded-2xl shadow-sm border-l-4 border-[#a13a0f]">
-          <h3 className="text-xl font-bold mb-2">南浦洞海鮮大餐</h3>
-          <p className="text-sm text-[#404752]">札嘎其市場現撈海鮮，最道地的釜山味。</p>
-        </div>
+      <div className="flex items-center justify-between">
+        <h2 className="text-3xl font-bold font-['Plus_Jakarta_Sans'] text-[#005ea3]">釜山在地美食指南</h2>
+        {selectedSpot && (
+          <button onClick={() => setSelectedSpot(null)} className="text-[#a13a0f] font-bold flex items-center gap-1">
+            <span className="material-symbols-outlined">arrow_back</span> 返回
+          </button>
+        )}
       </div>
+
+      <AnimatePresence mode="wait">
+        {!selectedSpot ? (
+          <motion.div 
+            key="list"
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: -20 }}
+            className="grid grid-cols-1 gap-6"
+          >
+            {GOURMET_DATA.map((spot, idx) => (
+              <button 
+                key={idx}
+                onClick={() => setSelectedSpot(spot)}
+                className="bg-white p-6 rounded-2xl shadow-sm border-l-4 border-[#a13a0f] text-left flex gap-4 hover:bg-[#f0e1c7]/30 transition-colors"
+              >
+                <img src={spot.image} alt={spot.title} className="w-24 h-24 rounded-xl object-cover shadow-sm" referrerPolicy="no-referrer" />
+                <div className="flex-1">
+                  <div className="flex justify-between items-start">
+                    <h3 className="text-xl font-bold">{spot.title}</h3>
+                    <span className="text-[10px] bg-[#ffdbcf] text-[#a13a0f] px-2 py-0.5 rounded font-bold">{spot.category}</span>
+                  </div>
+                  <p className="text-xs text-[#404752] mt-1 font-semibold">{spot.koreanName}</p>
+                  <p className="text-sm text-[#404752] mt-2 line-clamp-2">{spot.description}</p>
+                </div>
+              </button>
+            ))}
+          </motion.div>
+        ) : (
+          <motion.div 
+            key="detail"
+            initial={{ opacity: 0, scale: 0.95 }}
+            animate={{ opacity: 1, scale: 1 }}
+            exit={{ opacity: 0, scale: 0.95 }}
+            className="bg-white rounded-[2.5rem] overflow-hidden shadow-xl"
+          >
+            <img src={selectedSpot.image} alt={selectedSpot.title} className="w-full h-64 object-cover" referrerPolicy="no-referrer" />
+            <div className="p-8 space-y-6">
+              <div>
+                <div className="flex items-center gap-2 mb-2">
+                  <span className="bg-[#ffdbcf] text-[#a13a0f] text-[10px] font-bold px-3 py-1 rounded-full uppercase tracking-wider">{selectedSpot.category}</span>
+                  <span className="text-[#717783] text-[10px] font-bold uppercase tracking-wider flex items-center gap-1">
+                    <span className="material-symbols-outlined text-xs">location_on</span> {selectedSpot.location}
+                  </span>
+                </div>
+                <h3 className="text-3xl font-extrabold text-[#181c21]">{selectedSpot.title}</h3>
+                <div className="flex items-center gap-2 mt-2">
+                  <p className="text-lg font-bold text-[#005ea3]">{selectedSpot.koreanName}</p>
+                  <button 
+                    onClick={() => navigator.clipboard.writeText(selectedSpot.koreanName)}
+                    className="p-1.5 bg-[#f1f3fb] rounded-lg hover:bg-[#a1c9ff] transition-colors"
+                  >
+                    <span className="material-symbols-outlined text-sm">content_copy</span>
+                  </button>
+                </div>
+              </div>
+              <p className="text-[#404752] leading-relaxed text-lg">{selectedSpot.description}</p>
+              <button 
+                onClick={() => setSelectedSpot(null)}
+                className="w-full py-4 bg-[#f1f3fb] text-[#005ea3] rounded-2xl font-bold hover:bg-[#e0e2ea] transition-colors"
+              >
+                返回列表
+              </button>
+            </div>
+          </motion.div>
+        )}
+      </AnimatePresence>
     </div>
   );
 }
 
 function InfoView() {
+  const [selectedInfo, setSelectedInfo] = useState<InfoItem | null>(null);
+
   return (
     <div className="space-y-8">
-      <h2 className="text-3xl font-bold font-['Plus_Jakarta_Sans'] text-[#005ea3]">實用旅遊資訊</h2>
-      <div className="grid grid-cols-1 gap-6">
-        <div className="bg-white p-6 rounded-2xl shadow-sm border-l-4 border-[#717783]">
-          <h3 className="text-xl font-bold mb-2">交通攻略</h3>
-          <p className="text-sm text-[#404752]">地鐵、公車、WOWPASS 使用教學。</p>
-        </div>
-        <div className="bg-white p-6 rounded-2xl shadow-sm border-l-4 border-[#717783]">
-          <h3 className="text-xl font-bold mb-2">行李寄放</h3>
-          <p className="text-sm text-[#404752]">釜山站、南浦洞行李寄放處整理。</p>
-        </div>
+      <div className="flex items-center justify-between">
+        <h2 className="text-3xl font-bold font-['Plus_Jakarta_Sans'] text-[#005ea3]">實用旅遊資訊</h2>
+        {selectedInfo && (
+          <button onClick={() => setSelectedInfo(null)} className="text-[#717783] font-bold flex items-center gap-1">
+            <span className="material-symbols-outlined">arrow_back</span> 返回
+          </button>
+        )}
       </div>
+
+      <AnimatePresence mode="wait">
+        {!selectedInfo ? (
+          <motion.div 
+            key="list"
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: -20 }}
+            className="grid grid-cols-1 gap-6"
+          >
+            {INFO_DATA.map((info, idx) => (
+              <button 
+                key={idx}
+                onClick={() => setSelectedInfo(info)}
+                className="bg-white p-6 rounded-2xl shadow-sm border-l-4 border-[#717783] text-left flex items-center gap-4 hover:bg-[#f1f3fb] transition-colors"
+              >
+                <div className="w-12 h-12 bg-[#f1f3fb] rounded-full flex items-center justify-center text-[#005ea3]">
+                  <span className="material-symbols-outlined">{info.icon}</span>
+                </div>
+                <div className="flex-1">
+                  <h3 className="text-xl font-bold">{info.title}</h3>
+                  <p className="text-sm text-[#404752] mt-1">{info.content}</p>
+                </div>
+                <span className="material-symbols-outlined text-[#717783]">chevron_right</span>
+              </button>
+            ))}
+          </motion.div>
+        ) : (
+          <motion.div 
+            key="detail"
+            initial={{ opacity: 0, x: 20 }}
+            animate={{ opacity: 1, x: 0 }}
+            exit={{ opacity: 0, x: -20 }}
+            className="bg-white p-8 rounded-3xl shadow-lg space-y-6"
+          >
+            <div className="flex items-center gap-4">
+              <div className="w-16 h-16 bg-[#f1f3fb] rounded-2xl flex items-center justify-center text-[#005ea3]">
+                <span className="material-symbols-outlined text-3xl">{selectedInfo.icon}</span>
+              </div>
+              <div>
+                <h3 className="text-2xl font-bold text-[#181c21]">{selectedInfo.title}</h3>
+                <p className="text-[#404752] font-medium">{selectedInfo.content}</p>
+              </div>
+            </div>
+            <div className="space-y-4">
+              <h4 className="text-xs font-bold text-[#717783] uppercase tracking-widest">詳細內容</h4>
+              <ul className="space-y-3">
+                {selectedInfo.details.map((detail, i) => (
+                  <li key={i} className="flex gap-3 text-[#404752] text-sm leading-relaxed">
+                    <span className="text-[#005ea3] font-bold">•</span>
+                    {detail}
+                  </li>
+                ))}
+              </ul>
+            </div>
+            <button 
+              onClick={() => setSelectedInfo(null)}
+              className="w-full py-4 bg-[#f1f3fb] text-[#717783] rounded-2xl font-bold hover:bg-[#e0e2ea] transition-colors"
+            >
+              返回列表
+            </button>
+          </motion.div>
+        )}
+      </AnimatePresence>
     </div>
   );
 }

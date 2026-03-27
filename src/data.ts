@@ -22,343 +22,492 @@ export interface TimelineItem {
 export const ITINERARY_DATA: Record<string, DayItinerary> = {
   "D1": {
     id: "D1",
-    title: "抵達釜山：夜之翼",
-    subtitle: "The journey begins under the coastal stars.",
-    heroImage: "https://lh3.googleusercontent.com/aida-public/AB6AXuD9Uqh3PARDFBtvWAGv9RZYmPEg-q4ZeTSLqHFcNMI0WVDNrNgYg9jT5Er-4sb3qevHnWqnoZhlj17Ii6D6bO8QnCNWy0ZUc_doSeW4f0uOHGJTZcT27HewzSdVQPrCSrMRLurEbQg69n2eOhG4d2WjQMz1CgWlu8DNaMHt5eBzE5g_BVMgSKmU4tlLpG_RshDuKwYtUOluPvdEHRiEcvcm_XoDBez0yp0v9pcV3cgPovqqSSsybKdDGeckBqdJB257YSCzZcAaEHX_",
-    description: "開啟釜山之旅的第一章，從深夜的抵達開始感受這座城市的寧靜與美味。",
+    title: "抵達釜山：海港初探",
+    subtitle: "3/28 (六) Arrival & Nampo-dong",
+    heroImage: "https://lh3.googleusercontent.com/aida-public/AB6AXuDha8lzeH8OlwdKiw1FC5fS4-iqVTAi3YwNyun1r_AdY05eD8O2zpvw3JAzmmK2ifPyh1L2Xn__9G9ScFCC4TVwhMJ3jaIll4JJHiIXnjYEQM7JMEl_-fXfn_jVwrhXE0PST5h65-iNHn_VmGJCzEkmvS7Eq_vwTLzD9ozS95Bv9oa1FHGWMt6GJe0G9XvvW9_KfVgEumwn-s8jE_pyndpUZvvYQYtbUyFF3dfCX5YrKkFOo2oh3G-_WjXfc6xtyWb2u4ac2CbOFmOt",
+    description: "開啟釜山之旅，從台中出發，抵達後直奔海雲台享受宵夜。",
     items: [
       {
         time: "11:00",
-        type: "TRANSPORT",
-        title: "臺中 → 桃園國際機場 (TPE)",
-        description: "搭乘高鐵或接駁專車前往桃園，開啟旅程序章。"
+        title: "台中出發前往桃園機場",
+        description: "交通：預約包車接送。目的地：桃園國際機場 (TPE)。備註：檢查護照、網卡/漫遊是否準備妥當。",
+        type: "TRANSPORT"
       },
       {
         time: "17:30",
+        title: "班機起飛 (大韓航空)",
+        description: "航班資訊：Korean Air (KE)。時間：17:30 (TPE) 預計 20:45 抵達 (PUS 金海機場)。入境流程：填寫入境卡 (或 Q-Code)、領取行李、出關。",
         type: "FLIGHT",
-        title: "大韓航空 KE 班機起飛",
-        description: "飛往釜山金海國際機場 (PUS)，享受機上韓式服務。",
-        tags: ["Terminal 1 / Door 4"]
+        isHighlight: true
       },
       {
         time: "21:40",
-        type: "SHUTTLE",
-        title: "包車前往 海雲台 (Haeundae)",
-        description: "深夜包車直達海邊飯店，省去轉乘奔波。",
-        koreanName: "해운대"
+        title: "預約接機包車",
+        description: "交通：機場直達海雲台飯店。車程：約 45-60 分鐘 (視路況)。目的地：Best Western Hotel Haeundae。",
+        type: "TRANSPORT"
       },
       {
         time: "22:50",
-        type: "LATE NIGHT SNACK",
-        title: "深夜暖心：豬肉湯飯",
-        description: "釜山的代表美味，熱騰騰的濃郁湯頭洗去旅途疲憊。",
-        koreanName: "돼지국밥",
-        images: ["https://lh3.googleusercontent.com/aida-public/AB6AXuBQKxgBa4RQI8gGllUkHubwfaiGGFbO1YiKY8EqLsNp4eXoceMjiwb10nbWxP30mtFJxBmB5qO5lKKeMqzw7q8Iui67hljwwlc8OERneE5Zt2TIUF0ZiEn7Yw7yz5ZVKhFlisnqUZT6p_0QIdlP6cSEErGer0YJkkanQKH7kjkmbbeT_GN_Ccqz9Y5NDz7wnvBeq9zmVB3s44dTyJXE1ahqynzwiPTQDhhgvsCff1KVu6x8L7GDBqFIRhccfMwvFQYkWkhfPVVNvNJY"]
+        title: "海雲台宵夜",
+        description: "推薦：密陽豬肉湯飯、五福豬肉湯飯 或 水邊最高豬肉湯飯。備註：海雲台主街上有許多 24 小時營業的餐廳。",
+        type: "FOOD",
+        koreanName: "돼지국밥"
       }
     ]
   },
   "D2": {
     id: "D2",
-    title: "海雲台的藍色時分",
-    subtitle: "從全球最高的星巴克出發，漫步冬柏島，最後在遊艇上擁抱海風與夕陽。",
-    heroImage: "https://lh3.googleusercontent.com/aida-public/AB6AXuAHuNKhQIuSo76CDzelA20_hAW0qgLLNhKV224Dxntf5yLpbWtadp1z_cc6vnUbB8yJyPThY4NEyhTd4LD-OLMhYyck8XAc8K0OO8bPEJqPgQ0HjEXuKg3RxAojpPvfqrJYQarvhAWH-2uMLwVSozZ9Adz7pBdo-L3kGybNGelMdPWXTi0tsvfnHPiafQ8RhCIBiLk-YQDYngC-Mf5i201PxZsxMrFzdGP2Jef8puWMR501cbHCWAUgwirWOhJ9gswHAaCdJfed41WC",
-    description: "享受海雲台的絕美海景與奢華體驗。",
+    title: "海雲台海岸與遊艇夕陽",
+    subtitle: "3/29 (日) Haeundae & Yacht",
+    heroImage: "https://lh3.googleusercontent.com/aida-public/AB6AXuDmfIEw9wz1MYcnxU47fMRMOM7kcS6KvNuLDqHZ7sbziB395Oclk97n8HEu9Ao_e9ggoGyesmNPBilnextPkjIa4p_Xfa4GoVZctyMeZ1OXbeyRIQS6U4s4rwXsHg8pRCAqrFRaQFgjvis_GeYcydwyIWa6EAhFraL7ZTYZsZ6m2Y-BHi2u47XfdbQcBMfRjOC-PxMq-pxFxCnbsSpWYDWOXYSNe91bip-GwRObubC2Zo4cjIycH2ikiLcDO51tO6hWZ5yb-prZ7ftp",
+    description: "在世界最高星巴克享用早餐，漫步冬柏島，最後搭乘遊艇欣賞廣安大橋夜景。",
     items: [
       {
         time: "10:30",
-        title: "海雲台 X the SKY Starbucks",
-        description: "位於 99 樓，全球最高的星巴克。一邊品啜咖啡，一邊俯瞰海雲台彎月形海岸線的絕美景致。",
-        koreanName: "해운대 엑스더스카이",
-        images: ["https://lh3.googleusercontent.com/aida-public/AB6AXuDd9eTbZJmWPymAVZzObRV9OziluXhDef2BmApTPA3NydTABh7gn4RULuHeiYDbz5jxkAVOkS6i5Q3H4aHV_CirKf3cFnmat46EnjqgdlESyJdQk8nVgFZyum69MlhBgRpboY2TmezakwQM-IJJLsJy96yCsu19VIFCEC5X29GCUdJY1jRb-S1cKVW-Cm8wTGZE7PlglLrk8nkTbRtUeXp3ENBe7FtDasTYPkPauWoS8Eczkzq_KZXRbDnwDRX0s46SrlWDH4WDSRAs"]
+        title: "早餐：Busan X the SKY 99樓星巴克",
+        description: "特色：世界最高星巴克，可俯瞰整片海雲台沙灘。",
+        type: "FOOD",
+        tags: ["VIEW"]
       },
       {
         time: "12:00",
-        title: "冬柏島海岸散步道",
-        description: "沿著棧道漫步，經過著名的美人魚像與燈塔。這裡能拍到 Gwangandaegyo 廣安大橋的最佳角度。",
-        images: [
-          "https://lh3.googleusercontent.com/aida-public/AB6AXuAv8INp1aPhOXdFfSH9LkgcAbw5jui8ZlnSZm-3dXc53aBvutf6p4pNxLRqEMMSZnvH_QI7YFtEciF1Q3dK_r6acTJ8DFbgOm9V_7COt6hLNiknQQEmYdnlA_kj8_1G6o2t4E5RXFeCvzGWjBNv4G9ZSmkEnYQiWXnLExDVDHU9hT7zffYBvGCIMNgIMpUyx4M2HagZfpcd4_K_OQmPStORvyBE7beDpV9-Cun_ADpQ8WcKkkyJf5JHc18m6ji34s3CVv445tnkxyXe",
-          "https://lh3.googleusercontent.com/aida-public/AB6AXuCkrlqZYJ9ccl7jSJ7j6yevldd_8_vU5wyOZ9fjW2oni_pDTB3mWOvgnFXEkXl7IYi_zflBhHhaWdI-lvpr6JlhaV2twlsS0CvVtApPbk-rAM8KbE9nPCEODty3xPkFuFE0iuxRH4xcoO7vvNoKqFr-XKQg9DXRNYjwt1Zuq-RPUsFh3FQpCOF-Gg4ZiZ57UKMLRrEk4Mc_6VaAhocfOBDnNHswePTYHc4qpSXsn-h554eoKOxXlTSOUnolgbHvO8VXJ49Rfn8TKq0Y"
-        ]
+        title: "冬柏島海岸步道散策",
+        description: "交通：搭乘計程車前往冬柏島 APEC 世峰樓。路線：APEC 世峰樓 -> 海岸步道 -> 回到 The Bay 101 一帶。午餐選項：巨大韓牛 (Haeundae Gigantic Hanu)。",
+        koreanName: "동백섬"
       },
       {
         time: "14:00",
-        title: "海理團路 (Haeridan-gil) 文青街區",
-        description: "由舊鐵道宿舍改建的文青聚落，充滿個性的獨立書店、藝廊與手作工作室。",
+        title: "海狸團路 (Haeridan-gil)",
+        description: "地點：海雲台站後方文青街區。活動：逛街散步、伴手禮採買 (奶油夾心餅乾 Butter Sand)、咖啡廳下午茶休憩。",
         koreanName: "해리단길",
-        tags: ["選物店", "下午茶"]
+        tags: ["CAFE", "SHOPPING"]
       },
       {
         time: "17:00",
-        title: "Sunset Yacht Experience 遊艇夕陽巡航",
-        description: "包含香檳、點心，以及專業的夕陽航拍服務。航行時間約 60 分鐘。",
-        isHighlight: true,
-        images: ["https://lh3.googleusercontent.com/aida-public/AB6AXuBykH1_qDQitstYWAh3H6URWpHDb-N775KvhAnvnTZUNFKqFI6jPe7tVyocACTTFMzXUz9aH0ZLyXhQekycpqWxeROmWQfq0Y2uYxNwyJ44dajEe94n5M9syrcTsQLN_bzftbcQKzmIPpyh6XzsLWIs98zaITYE4vtIsuSI91YVnTuiJtRUAuy-xU1Kckh3dos-VjmVP5PQNyv1j73NWrOTs7XlL-wC0bUCraoK7leOiMLsO6pUTwu57US7YT1FwtMFKvF4VwXTVOom"]
+        title: "遊艇夕陽與港景",
+        description: "集合地點：The Bay 101 碼頭。活動：搭乘遊艇欣賞夕陽與廣安大橋夜景。參考資訊：三月底夕陽時間約為 18:40。航程時間：約 50-60 分鐘。",
+        type: "ACTIVITY",
+        isHighlight: true
       },
       {
         time: "19:30",
-        title: "釜山必吃 BBQ 晚宴",
-        description: "品嚐釜山名店，享受炭火香氣與美味肉汁。",
+        title: "晚餐：海雲台烤肉",
+        description: "推薦：味贊王鹽烤肉 或 伍班長烤肉。備註：結束遊艇行程後直接於海雲台商圈用餐。",
+        type: "FOOD",
         options: [
-          { name: "味贊王鹽烤肉", desc: "厚切豬五花極品，專業店員代烤。", korean: "맛찬들왕소금구이" },
-          { name: "伍班長烤肉", desc: "海雲台名店，炭火香氣濃厚。", korean: "오반장" }
+          { name: "味贊王鹽烤肉", desc: "專業代烤厚切豬肉", korean: "맛찬들왕소금구이" },
+          { name: "伍班長烤肉", desc: "傳統炭火烤肉", korean: "오반장" }
         ]
       }
     ]
   },
   "D3": {
     id: "D3",
-    title: "速度與海：廣安里之約",
-    subtitle: "體驗速度快感與廣安里的浪漫氛圍。",
-    heroImage: "https://lh3.googleusercontent.com/aida-public/AB6AXuB2wc0B1kENxJhKn84TnBaMWaGFmAZaUS2q_-UJLZqq3jpp_DeQwLoXXoKkfxdPqVQJshJMo5h9Kep-iV_gy5rl1M5ey1Xa8g2csq8Ov-byePXMojiQ_QCOIbKmAfyN-QqBF1RRLCTPmS3qgusnRfEXwynUMcEfKeZb9OLPHVZUiek99pAzde3TfwNWg6VwWmTP3jlujAadVWuwOW5DGiSXk_w-dqzfsw-6juqFcQVm3TxLg9RYodd4KfhfqVW5Yiddk2K-X-sLAqpi",
-    description: "從刺激的斜坡滑車到悠閒的海邊咖啡廳。",
+    title: "斜坡滑車與親友會合",
+    subtitle: "3/30 (一) Skyline Luge & Reunion",
+    heroImage: "https://lh3.googleusercontent.com/aida-public/AB6AXuDxV08gf7b_er3kONtPCYxdXZwfARGzIoiMI8kn5bcLqyQ7FPleFNxvfRmOCpe0CkFayc4O1d1Lox1itOqqihxynH6ycDRQSTcpubwCFt6UwxbGokH6XVDLn0t-4l9Xxhay1JE8cNII3y4ce3fUHSn5Mb7W7nNyYoWf6Q0iemCdQZNf-MasMEtajRpfz6co5VmjT_eQDu6a_4fiyVNOWvqf5pNQ3R9oYUvIkjcmi_W3FGFxz7NkC8tyUnpqB0AOfNYvQ2Tu1mh4Ik--",
+    description: "體驗刺激的斜坡滑車，前往廣安里看海，晚上迎接親友抵達。",
     items: [
       {
+        time: "10:00",
+        title: "飯店出發往機張",
+        description: "交通：搭乘計程車前往機張區 (約 25-30 分鐘)。",
+        type: "TRANSPORT"
+      },
+      {
         time: "10:30",
-        type: "景點",
-        title: "Skyline Luge 釜山",
-        description: "體驗奧西利亞站旁的斜坡滑車，俯瞰機張郡壯闊的海景，感受速度與海風的交織。",
-        koreanName: "스카이라인 루지 부산"
+        title: "Skyline Luge 斜坡滑車",
+        description: "活動：包含空中吊椅觀景與斜坡滑車下山。建議：購買 4 次券可玩得較充裕。",
+        type: "ACTIVITY",
+        isHighlight: true
       },
       {
         time: "13:00",
-        type: "美食",
-        title: "廣安里海邊咖啡廳",
-        description: "挑選一家面對廣安大橋的選物店咖啡廳，在窗邊享受午後的慢時光。",
-        images: [
-          "https://lh3.googleusercontent.com/aida-public/AB6AXuDmfIEw9wz1MYcnxU47fMRMOM7kcS6KvNuLDqHZ7sbziB395Oclk97n8HEu9Ao_e9ggoGyesmNPBilnextPkjIa4p_Xfa4GoVZctyMeZ1OXbeyRIQS6U4s4rwXsHg8pRCAqrFRaQFgjvis_GeYcydwyIWa6EAhFraL7ZTYZsZ6m2Y-BHi2u47XfdbQcBMfRjOC-PxMq-pxFxCnbsSpWYDWOXYSNe91bip-GwRObubC2Zo4cjIycH2ikiLcDO51tO6hWZ5yb-prZ7ftp",
-          "https://lh3.googleusercontent.com/aida-public/AB6AXuApce_6Jk57R1WKBVDg2aR_iQEP1HJ244lttAJuwmcXmG0bsOzTcfnAt3SwuU8de1681iLDH3Umc5ewrZZMLhdbWa7huwqMI5BwEQOAe5U2wxiXJPGsWo4dtb6VgAumaP3EhE5ttOw-IR_u2osGgY0B_fmNkoAtXY-nSii_kD1Vdl7nVfJ-HFr0BLXxjwhG48pRfL2o7GnvnOzY6Wd-kgvTkc-C7-FhCxAsXxboSfnBVOk9eIVgzIIlc3Hk0Fn44WS_IcS4dyV0bW1i"
-        ]
+        title: "廣安里海邊",
+        description: "交通：搭乘計程車前往。活動：在海邊咖啡廳休憩，觀賞廣安大橋海景。",
+        koreanName: "광안리해수욕장"
       },
       {
         time: "18:00",
-        type: "購物",
-        title: "海雲台市場：古思來魚板",
-        description: "必嚐釜山最具代表性的魚板店，多樣口味令人驚艷。",
-        koreanName: "고래사어묵 해運대점"
+        title: "晚上：海雲台傳統市場",
+        description: "交通：步行 3-5 分鐘。美食推薦：古思來魚板、海鮮蔥餅、辣炒年糕、韓式小吃。",
+        type: "FOOD",
+        koreanName: "해운대전통시장"
       },
       {
         time: "22:30",
-        type: "聚會",
-        title: "深夜炸雞宵夜派對",
-        description: "與朋友們會合後，展開韓式炸雞三選一爭霸。",
-        tags: ["橋村 (Kyochon)", "60th (60계치킨)", "Puradak (푸라닭)"]
+        title: "親友會合 (俞安、亮羽抵達)",
+        description: "親友班機：16:40 起飛 -> 19:55 抵達金海機場。預計會合：約 22:30 抵達海雲台飯店大廳。",
+        type: "INFO"
+      },
+      {
+        time: "23:00",
+        title: "深夜宵夜時光",
+        description: "選項 1：一起前往主街吃豬肉湯飯。選項 2：請飯店代叫炸雞外送 (推薦：橋村 Kyochon、60th 或 Puradak Chicken)。",
+        type: "FOOD"
       }
     ]
   },
   "D4": {
     id: "D4",
-    title: "水療與極致購物之旅",
-    subtitle: "Centum City & Haeundae District",
-    heroImage: "https://lh3.googleusercontent.com/aida-public/AB6AXuAF3Vsk9SV3iGgnzMKoA0-Kh7B6rI83MGuZV6yCxCK0NQCi5fqKhLRK3NTHxNKvAe3E2k5lFeNGWHDQizOrFc7v7z5tZOu8oNPxDxgiz4Ui4Dy8HpvcBAOFw5dtqIab_gkbCcQ0yECOSTE0clgvR8cXpzJtpQeNbkJSo75UaJJC0VwxLG2KOjtGJmhl_0a0udMT7mInQcSQ1UHxcghwvDzgoINk7rvWLPRFToA_F5qgfHUm05lwxtNIovWvChwMVum67wC02dTVoBsL",
-    description: "體驗全球最大百貨與頂級汗蒸幕。",
+    title: "新世界百貨與五星汗蒸幕",
+    subtitle: "3/31 (二) Shinsegae & Spa Land",
+    heroImage: "https://lh3.googleusercontent.com/aida-public/AB6AXuDCiYTBWoekzyUsObaV6OYqPUGLSUuuD4yWE5MvSgNKvXKn6mBcjX35zqfsY500ITVth92USZgifPpnUS-QLQXysVPiwRr1Xd2rqrMeFGmLhGYekPZX9bP12CNKUec5mL7Eq6HqnV9GlnNQgSnWgRuO6oebVnYE5qkmmskcd_QyPzVNcqzlzGWSPTGC4DsMyAxcVni2YiW0v0JWlhDqonwWWcUix2xlv4SuCL_f2Aq2sy1bnidoM-eGzVo6UXfWA00XvKc25I1H_FG8",
+    description: "參觀世界最大百貨公司，享受頂級汗蒸幕放鬆身心。",
     items: [
       {
-        time: "10:30 AM",
-        title: "電影殿堂 Cinema Center",
-        description: "釜山國際電影節的主會場，欣賞其榮獲金氏世界紀錄的巨大懸臂屋頂結構。",
-        koreanName: "영화의전당",
-        images: [
-          "https://lh3.googleusercontent.com/aida-public/AB6AXuDxV08gf7b_er3kONtPCYxdXZwfARGzIoiMI8kn5bcLqyQ7FPleFNxvfRmOCpe0CkFayc4O1d1Lox1itOqqihxynH6ycDRQSTcpubwCFt6UwxbGokH6XVDLn0t-4l9Xxhay1JE8cNII3y4ce3fUHSn5Mb7W7nNyYoWf6Q0iemCdQZNf-MasMEtajRpfz6co5VmjT_eQDu6a_4fiyVNOWvqf5pNQ3R9oYUvIkjcmi_W3FGFxz7NkC8tyUnpqB0AOfNYvQ2Tu1mh4Ik--",
-          "https://lh3.googleusercontent.com/aida-public/AB6AXuCb0PDpVCouQ-Sy-z2SyiWMFG7IRDGET1j0PKjOTT547R7vBx9BOPrW9OlHhMXepHXwEpmJc9TyMn5jdYdCKmi8P9qz767sG1F3Ox-0qxxa0ojYwtFbl-XiT3QpheWc1fZYpIUAKWvES10NMEYwKZvcAKyFmZifpKON8OBzpj1ryyY8zDhXGasL6bcjVJGDiJ6FyTEqoK4oLT1rIp5QjF2VP9tt0spEvFa4JdUZxHFoDIG_b5K52TtD_HPrjkMReKgB0-V8xO9mV2VA"
-        ]
+        time: "10:00",
+        title: "飯店出發往 Centum City",
+        description: "交通：搭乘計程車或地鐵 2 號線至 Centum City 站。",
+        type: "TRANSPORT"
       },
       {
-        time: "11:30 AM",
-        title: "新世界百貨 Centum City",
-        description: "全球最大規模的百貨公司，結合了購物、娛樂、滑冰場與藝廊。",
-        koreanName: "신세계백화점",
-        tags: ["#全球最大", "#免稅購物", "#美食街"]
+        time: "10:30",
+        title: "釜山電影殿堂",
+        description: "活動：參觀獨特建築頂棚與攝影留念。",
+        koreanName: "영화의전당"
       },
       {
-        time: "02:30 PM",
-        title: "Spa Land Centum City",
-        description: "釜山最頂級的汗蒸幕體驗，擁有22個溫泉池與13種不同主題的汗蒸房。",
-        koreanName: "스파랜드",
+        time: "11:30",
+        title: "新世界百貨 (Shinsegae Centum City)",
+        description: "特稱：金氏世界紀錄最大百貨公司。午餐：百貨內美食街 (選擇極豐富)。",
+        type: "SHOPPING",
+        koreanName: "신세계백화점 센텀시티점"
+      },
+      {
+        time: "14:30",
+        title: "Spa Land 汗蒸幕",
+        description: "地點：百貨 1 樓。體驗：包含多種溫度的汗蒸房、足浴、冷熱池。備註：入場時限通常為 4 小時。",
+        type: "ACTIVITY",
         isHighlight: true,
-        tags: ["4小時停留"]
+        koreanName: "스파랜드"
       },
       {
-        time: "06:00 PM",
-        title: "海雲台市場 & 韓式烤肉",
-        description: "漫步海雲台傳統市場，尋找最具在地風味的烤韓牛或烤五花肉。",
-        koreanName: "해운대시장",
-        images: ["https://lh3.googleusercontent.com/aida-public/AB6AXuDmOIa_9bagbfQ1vHF8BN8jFnRvCF1lWshNTke4eU0kqTQ6uvHgc4DzSVd4uypcEyVj4u88WlOf9_Nv6WZtUREQNeSPmQ27-Dy4RtQRvEJBWAW6M39EmjfSu4SmuKl8vKlf_cvC2dho38KmrdRajQ79ikmd1KhQGRoHgetyJLl6Uq9QkiyqkwGE1g1ru2_5V0X7gIq0tYQseCuo4pinv0OVsSdxQhmCkX_3FJnKyDGpQT966RmW3EdDwr0GDD4kQeD3BBEb77kCz8Rt"]
+        time: "18:00",
+        title: "晚上回飯店後彈性行程",
+        description: "晚餐/活動選項：逛海雲台傳統市場、味贊王鹽烤肉、伍班長烤肉。視當天體力彈性決定。",
+        type: "FOOD"
       }
     ]
   },
   "D5": {
     id: "D5",
-    title: "天空膠囊與南浦洞漫遊",
-    subtitle: "海岸列車與傳統市場的感性對話",
-    heroImage: "https://lh3.googleusercontent.com/aida-public/AB6AXuCdazwxePi_iv6i9GNMpR9qmhRN9RO4TaiMY8WFvsU2OxWt9WNRBF8U5urcK7PYA8rZHfwzd7toDMURhd0gHYtTwM0ubWHeY0tToiIXIBtvpLpSB7tf78iFg30BwGsJbn3bm0DBEPVhBfJ0wVRc9PKpIooRvWfiIhRTh6h7-aliiNsECcZqITNd7js5gntm133-_jRbx4qpqvoZfWXenTbnARVnpgVNEy2RE1t0mljoOzpPpTlMt0wWHY3yLQlRDc0-rHW3W0LG2qDo",
-    description: "搭乘可愛的天空膠囊小火車，並前往南浦洞品嚐在地美食。",
+    title: "膠囊列車與移動至南浦洞",
+    subtitle: "4/1 (三) Sky Capsule & Nampo",
+    heroImage: "https://lh3.googleusercontent.com/aida-public/AB6AXuDha8lzeH8OlwdKiw1FC5fS4-iqVTAi3YwNyun1r_AdY05eD8O2zpvw3JAzmmK2ifPyh1L2Xn__9G9ScFCC4TVwhMJ3jaIll4JJHiIXnjYEQM7JMEl_-fXfn_jVwrhXE0PST5h65-iNHn_VmGJCzEkmvS7Eq_vwTLzD9ozS95Bv9oa1FHGWMt6GJe0G9XvvW9_KfVgEumwn-s8jE_pyndpUZvvYQYtbUyFF3dfCX5YrKkFOo2oh3G-_WjXfc6xtyWb2u4ac2CbOFmOt",
+    description: "搭乘超人氣天空膠囊列車，下午移動至南浦洞商圈。",
     items: [
       {
+        time: "10:30",
+        title: "辦理退房與行李寄放",
+        description: "行李寄放飯店櫃台。",
+        type: "INFO"
+      },
+      {
+        time: "11:00",
+        title: "前往尾浦站 (Mipo Station)",
+        description: "交通：建議搭乘計程車 (約 5-8 分鐘)。",
+        type: "TRANSPORT"
+      },
+      {
         time: "11:30",
-        type: "景點",
-        title: "海雲台天空膠囊 (尾浦 ➔ 青沙浦)",
-        description: "搭乘可愛的復古彩色小火車，在高空軌道上近距離俯瞰釜山絕美海岸線。",
-        koreanName: "해운대 스카이캡슐"
+        title: "海岸天空膠囊列車 (Sky Capsule)",
+        description: "路線：尾浦站 往 青沙浦站。景色：單程約 30 分鐘，沿著海岸慢速行駛。",
+        type: "ACTIVITY",
+        isHighlight: true,
+        koreanName: "해운대 블루라인파크 스카이캡슐"
       },
       {
         time: "12:00",
-        title: "青沙浦散策 (紅白燈塔)",
-        description: "散步至著名的雙子燈塔，感受漁村與現代鐵道的交織美景。",
+        title: "青沙浦 (Cheongsapo) 散策",
+        description: "景點：青沙浦平交道 (釜山小鎌倉)、紅白燈塔。下午茶：Diart Coffee (土耳其蜂蜜奶油麵包 Kaymak)。",
         koreanName: "청사포",
-        tags: ["拍照點", "海風"],
-        images: [
-          "https://lh3.googleusercontent.com/aida-public/AB6AXuAXIb_W5TrO9fuL92bC8CFB67RiV6EtezgtUqCgtIOpH4bt-LsL4F5MiW-4vAKYVqZ63oSy_MsMec47GIVKezpx4PNndGnUd7Bppd5AzREnAvXIn1nOWepzlj0D86PNqKYC1fQw8yNOiZxz35nSZgXikzAexUfIgigL-a6VZwBh4V3tBWqyMqlR9ohbT-Wq0-OwZ0ARRumygZ8CFxVjoMtMW0yOgEwmH64t2AQwkznKwrRwtxglbSZLAmsYC1Ear3PvoNQJ6OTq88Yn",
-          "https://lh3.googleusercontent.com/aida-public/AB6AXuDg4_6Stg_zbC-RO7lnCQCpL7D8xPP3-WD8eY3Xrfj9k-lfA1a_HcG-7iqFm0by7BNSDxt4KSG62y_tBc1TR2eN-UHIoXO4J2DdrW3p_nGGJkh-Zzm21gF01MomXRuQtLqh-f8tixSFmj4img0gBaj3E9tRRK3cioKb55eMQHGmff04damaeGAexOAc7HFpS6SL0YGga5uqMeYfZmLeebvHuyqTfDxuzaFpUdN5oWA-kV3f4-25QsniRVUOGwwaa-YWBdBqiarcdNCR"
-        ]
+        tags: ["VIEW", "CAFE"]
       },
       {
         time: "15:30",
-        title: "海岸列車回程",
-        description: "搭乘海岸列車 (Beach Train) 返回尾浦，體驗不同於膠囊小火車的寬廣視角。"
+        title: "海岸列車 (Beach Train)",
+        description: "路線：青沙浦站 返回 尾浦站。",
+        type: "TRANSPORT"
       },
       {
         time: "17:30",
-        type: "住宿",
-        title: "GnB Hotel Nampo 入住",
-        description: "轉移至熱鬧的南浦洞區，方便接下來的夜晚行程與購物。",
-        koreanName: "GnB 호텔 남포"
+        title: "移動至南浦洞",
+        description: "交通：預約包車市區接送。目的地：南浦洞 GnB Hotel。",
+        type: "TRANSPORT"
       },
       {
         time: "18:30",
-        type: "美食與購物",
-        title: "南浦洞 / BIFF 廣場 / 國際市場",
-        description: "沉浸在釜山最豐富的在地市集中。必吃糖餅、辣炒年糕、拌粉條。",
-        tags: ["BIFF 광장", "국제시장"]
+        title: "南浦洞商圈晚餐",
+        description: "逛街順序：BIFF 廣場 (小吃) -> 南浦洞商圈 -> 國際市場 / 富平罐頭市場 (夜市)。",
+        type: "FOOD",
+        koreanName: "남浦동"
       }
     ]
   },
   "D6": {
     id: "D6",
-    title: "包車一日遊：甘川與海岸線",
-    subtitle: "2024.10.24 Thursday",
-    heroImage: "https://lh3.googleusercontent.com/aida-public/AB6AXuA-iORXLAXN46M_2Y-r1EPSDVd-hsVlIndI1F4yOuDcMnNDxXTzCBg_F4d0LxMgCHayXMgndg9EgWpHg-6VQ-mdfX0KQY-tRLMmU7uuQj86U8037FAwC6R-Ki_7Y43Gp3ozaznu-OMDMVFLCjkPnjOh4v4PbDcExQuADQ5eLU5jEmKALeP9ZTT-YEuXNRT8vgvLJQ4KxW_liekZURBQd0b-rsVhV1MWyaqmU-JykoCr6a17F24FxPJQPq5ouiaQcME1vQFIQ0-3Csyl",
-    description: "探索韓國的聖托里尼與絕美海岸線。",
+    title: "釜山精華包車一日遊",
+    subtitle: "4/2 (四) Busan Highlights Tour",
+    heroImage: "https://lh3.googleusercontent.com/aida-public/AB6AXuBQKxgBa4RQI8gGllUkHubwfaiGGFbO1YiKY8EqLsNp4eXoceMjiwb10nbWxP30mtFJxBmB5qO5lKKeMqzw7q8Iui67hljwwlc8OERneE5Zt2TIUF0ZiEn7Yw7yz5ZVKhFlisnqUZT6p_0QIdlP6cSEErGer0YJkkanQKH7kjkmbbeT_GN_Ccqz9Y5NDz7wnvBeq9zmVB3s44dTyJXE1ahqynzwiPTQDhhgvsCff1KVu6x8L7GDBqFIRhccfMwvFQYkWkhfPVVNvNJY",
+    description: "包車深度遊覽釜山經典景點，從甘川洞到松島纜車，最後欣賞光影藝術。",
     items: [
       {
+        time: "09:30",
+        title: "飯店大廳集合 (包車出發)",
+        description: "與包車司機會合，展開釜山精華景點一日遊。",
+        type: "TRANSPORT"
+      },
+      {
         time: "10:00",
-        type: "景點",
         title: "甘川洞文化村",
-        description: "探索「韓國的聖托里尼」，穿梭在色彩繽紛的小屋巷弄中，尋找小王子與狐狸的身影。",
+        description: "提示：抵達後先預約「手翻書」製作。停留：約 1.5 小時。",
         koreanName: "감천문화마을",
-        images: [
-          "https://lh3.googleusercontent.com/aida-public/AB6AXuAxuSz6cfDCniPoF4Hou_pUOOMztkL6PWguWiQjIY9PEYLDUWxa4mF8PfQr0fmB7X-tfSaj-bwdZGeLhMu8gVpMKgtFz7e4lkJP_7bKvJalZLIqC4MEmkh6rY6Z3L3DBrpy14bLoWDUfHVs22rJKAGTkCD_8BwW-K5eIus5GfnOKVVkn0-EpdIakVzS0gPIoxkYomW2QHLCUgD9ehvw3TiikNEVs_ySu6zWVQvZiG9fLBFtxOR6Qs6U8IxPfnR7ulXKqrnfY27PR2c_",
-          "https://lh3.googleusercontent.com/aida-public/AB6AXuDq0KfLJb95V_g-tZqsvbC65uLI4tQKs9HWy5naEkixv0b63zjJkHx-e2dXE36kfd520aYzIadbeHOH2mT0B-a2PYi2V8Zu6ON-_P7azIMyQ2zQBHsCirexJkv7kzyixAwfcEHTpQZNRL5bmfHbGRiSQjYhhZJBzYb1Z-rpo4PYRZIBIMForR7XvjkFFSv8hHu3oxsXCeC8-sUWuKwcW2ubg0Kg7mhQmiSfiSQAhVbQaqKUmQsMvDc0LZypzNL0vfuk3YPEDtHtnpAi"
-        ]
+        isHighlight: true
       },
       {
         time: "11:50",
-        title: "松島天空步道 (Skywalk)",
-        description: "漫步於蜿蜒在海面上的透明步道，感受腳下波濤湧動的刺激感。"
+        title: "松島天空步道",
+        description: "漫步在海上步道，欣賞松島海景。停留：約 30 分鐘。",
+        koreanName: "송도구름산책로"
       },
       {
         time: "12:20",
-        title: "松島海上纜車",
-        description: "搭乘水晶車廂跨越海灣，從高空俯瞰松島海灘與影島的絕美景致。"
+        title: "松島海上纜車 (Songdo Cable Car)",
+        description: "建議：搭乘水晶車廂 (地板透明)，購買來回票。",
+        koreanName: "송도해상케이블카"
+      },
+      {
+        time: "13:30",
+        title: "午餐：三進魚板 或 松島周邊海鮮",
+        description: "品嚐道地的三進魚板或在松島享用新鮮海產。",
+        type: "FOOD"
       },
       {
         time: "14:50",
-        type: "探索",
         title: "白淺灘文化村",
-        description: "曾是韓戰難民的避難所，如今轉型為藝術村。緊鄰懸崖的海岸步道，每一處轉角都是絕佳的攝影位。",
-        koreanName: "흰여울문화마을",
-        images: ["https://lh3.googleusercontent.com/aida-public/AB6AXuA22qcDZcNoyYJ47e2KGERxhM0gm4_k69fOO9JL6sLxLqSenHCndWtkxMkoHH8ygIffuQPrQ3K9TlK1Kye-L-YkonDK0quWA1OYMVWwoI4dbyOlB863odXCybmcsL6UVLVaN0rjAC_5vTupPsZaxhwkLhC7mJD6zuXZTjkc2dTn0cklB4p8HzwkBkIYRaexWhGxT3kquHMcp2igRNxwMVeUcROPVNZuzUanNmHuTzQnbSRnYGTeVh0HSS67qt_cLUYsv3h52_w2yy68"]
+        description: "備註：影島最美海岸村落，有許多特色海景咖啡廳。",
+        koreanName: "흰여울문화마을"
       },
       {
         time: "16:20",
-        title: "THRILL ON THE MUG",
-        description: "海景咖啡廳休憩"
+        title: "THRILL ON THE MUG 咖啡廳",
+        description: "活動：可在此體驗高空滑索 (視天候與個人體力)。",
+        type: "CAFE"
       },
       {
         time: "18:00",
-        title: "Arte Museum Busan",
-        description: "沈浸式數位藝術展覽"
+        title: "Arte Museum 釜山",
+        description: "體驗：最新開幕的沉浸式光影藝術館。",
+        type: "ACTIVITY",
+        isHighlight: true
       },
       {
         time: "20:30",
-        type: "美食",
-        title: "明誠一隻雞",
-        description: "釜山站周邊人氣美食，暖胃又美味。",
-        koreanName: "명성닭한마리"
+        title: "晚餐：明星一隻雞",
+        description: "享用美味的一隻雞料理，包車結束後自由活動。",
+        type: "FOOD"
       }
     ]
   },
   "D7": {
     id: "D7",
-    title: "西面：潮流之眼",
-    subtitle: "探索釜山最繁忙的十字路口，感受這座城市流動的時尚動脈。",
-    heroImage: "https://lh3.googleusercontent.com/aida-public/AB6AXuCoopmcgL6FmRAPvd1w9XtxNGEMlhcJjtkphKT2WJIJrv4rdOWYz-Hvk73rzYsvms3BalS32fnqI9R2wCrrjqXE-zKFnMg97IdVnuIpdoWkMJ0W4RNz5is8ZpF1vlXtiyKbef8y3vmusr1CHKC6pvS3ZzN1ctsX4CBvVpYwLKEkHYOMhXvF68zfz-YG0eFaYe9D6oX0nYq9IvaVisr2CATzKw9R-k0VRn0NM6c5KeZ1OXS1bQZFF2qsjLRyLS5sIl7JonZoEcTnE4w8",
-    description: "從地下街購物到文青咖啡街。",
+    title: "西面商圈深度逛街",
+    subtitle: "4/3 (五) Seomyeon Shopping",
+    heroImage: "https://lh3.googleusercontent.com/aida-public/AB6AXuBQKxgBa4RQI8gGllUkHubwfaiGGFbO1YiKY8EqLsNp4eXoceMjiwb10nbWxP30mtFJxBmB5qO5lKKeMqzw7q8Iui67hljwwlc8OERneE5Zt2TIUF0ZiEn7Yw7yz5ZVKhFlisnqUZT6p_0QIdlP6cSEErGer0YJkkanQKH7kjkmbbeT_GN_Ccqz9Y5NDz7wnvBeq9zmVB3s44dTyJXE1ahqynzwiPTQDhhgvsCff1KVu6x8L7GDBqFIRhccfMwvFQYkWkhfPVVNvNJY",
+    description: "在釜山的中心地帶盡情購物，探索文青咖啡街與在地美食。",
     items: [
       {
         time: "10:30",
-        title: "西面地下街與購物中心",
-        description: "朝聖韓國人氣品牌 Matin Kim 與 Mardi Mercredi，在此盡情探索最新韓系穿搭美學。",
-        koreanName: "서면지하상가",
-        tags: ["時尚", "免稅"]
+        title: "抵達西面 (Seomyeon)",
+        description: "交通：從南浦洞搭乘計程車 (約 30-40 分鐘) 或 地鐵 1 號線。午餐：西面商圈 / 西面地下街美食。",
+        type: "TRANSPORT"
+      },
+      {
+        time: "10:30",
+        title: "西面商圈逛街",
+        description: "地點：西面地下街、周邊百貨 (NC、樂天)。逛街重點：西面地下街、Object 西面店、Sameday、Matin Kim、Mardi Mercredi。",
+        type: "SHOPPING",
+        isHighlight: true,
+        koreanName: "서면"
       },
       {
         time: "17:30",
-        title: "田浦咖啡街",
-        description: "舊工業區轉型的文青聚落，每一間咖啡廳都有著獨特的建築語言與迷人香氣。",
+        title: "田浦咖啡街 (Jeonpo Cafe Street)",
+        description: "交通：從西面商圈步行約 10-15 分鐘。活動：探索特色咖啡廳與文創小店。",
         koreanName: "전포카페거리",
-        images: ["https://lh3.googleusercontent.com/aida-public/AB6AXuBDg9p0hfS8gAJOIUNiCAJAN39CzH2bB0O4Df8Gmvzy_BC_uG50vIHIPGDYSIcZbUwxPRfygM0HnIEMdBqTmF5lB08ugdowApQGNgKSpFJ8hjOa-6fDJ4ehi1HMuIHT5aZtvSx1dEAy4orNsSDNY2f5O0BiYocFKhDfppkgtCnuGLEdTQHh45VNuBwGI_njjuV9MRR-99aacu7eULwXceOGSem9H3Jx0ye9tIhOFjpf7KrJmh-SmF8HKZxGCdhilTPYOOoL3eKtvWyi"]
+        tags: ["CAFE", "TRENDY"]
       },
       {
         time: "19:00",
-        title: "西面美食盛宴",
-        description: "享受西面的人氣美食。",
+        title: "晚餐：西面餐廳",
+        description: "餐廳選項：83 烤肉、烤肉的男子、螞蟻家辣炒章魚、釜山烤肋排、豬肉湯飯。",
+        type: "FOOD",
         options: [
-          { name: "83 Haechi 烤肉", desc: "頂級韓牛與在地燒烤", korean: "83해치" },
-          { name: "螞蟻家 Geamijip", desc: "釜山必吃章魚蝦子肥腸鍋", korean: "개미집" }
+          { name: "83 烤肉", desc: "頂級韓牛與在地燒烤", korean: "83해치" },
+          { name: "螞蟻家", desc: "章魚蝦子肥腸鍋", korean: "개미집" }
         ]
       },
       {
         time: "21:00",
-        title: "百年鐵鍋炸雞",
-        description: "傳統大鐵鍋炸出的極致香脆，搭配清爽的啤酒。",
+        title: "宵夜外送/外帶",
+        description: "重點：記得買「百年鐵鍋炸全雞」。回程：搭乘計程車回 GnB Hotel。",
+        type: "FOOD",
         koreanName: "거인통닭"
       }
     ]
   },
   "D8": {
     id: "D8",
-    title: "再會，釜山",
-    subtitle: "Bupyeong Gukje Market & Departure",
+    title: "最後採買與回家",
+    subtitle: "4/4 (六) Last Shopping & Departure",
     heroImage: "https://lh3.googleusercontent.com/aida-public/AB6AXuDCiYTBWoekzyUsObaV6OYqPUGLSUuuD4yWE5MvSgNKvXKn6mBcjX35zqfsY500ITVth92USZgifPpnUS-QLQXysVPiwRr1Xd2rqrMeFGmLhGYekPZX9bP12CNKUec5mL7Eq6HqnV9GlnNQgSnWgRuO6oebVnYE5qkmmskcd_QyPzVNcqzlzGWSPTGC4DsMyAxcVni2YiW0v0JWlhDqonwWWcUix2xlv4SuCL_f2Aq2sy1bnidoM-eGzVo6UXfWA00XvKc25I1H_FG8",
-    description: "最後的採購與告別。",
+    description: "最後的採購與告別，帶著滿滿的回憶返回台中。",
     items: [
       {
+        time: "11:00",
+        title: "辦理退房與行李寄放",
+        description: "行李寄放飯店櫃台。",
+        type: "INFO"
+      },
+      {
         time: "11:30",
-        title: "南浦、國際市場、富平市場",
-        description: "最後的採購時光，品嚐富平市場的街頭小吃，購買伴手禮與韓國香油。",
-        koreanName: "국제시장",
-        tags: ["SHOPPING", "NAMPO"],
-        images: [
-          "https://lh3.googleusercontent.com/aida-public/AB6AXuA46gjUox9mjlpXsgHYYKjj_JD3WUPawTd_wt68kId29ZEvYW-GduG7cSs-3kPllLnlZ7Df6ouW03Fwd_j-pRe8m4a5gPZAubMCAFxY-GHAa0Yi8qWZW8seZ_aV98vFaOpVzNqDZr5Bs31BOq5lv_m1s56drAdyETud0ZmMXYkhTc9_czj9QFK7-R4dvlYV9efrP5KslVhF76_vrDlOBHg4yeYDQ76e4RprnMxj9onocWbU8NzfboILxIf9hhtV2NKpohQ-kJTBMNML",
-          "https://lh3.googleusercontent.com/aida-public/AB6AXuBnorKoDMaphk9kjNoSZ6Xm3ZZ7YPkpNUUF4dQF5qjQ4rv8KstpcwOMhXmKnZuVcDeJqLNdlOdAfxdAbovQ2Lx5IDZvQa3d-1I-_w2qRjywH4E4P6b24iMvFUlEd0I32pGbt4UwOMzAsgjn1QTIw8B-7hThIdCo5L4nIjPKAQZbhnMCttwt1oUA6-7KiJKmcbHT_e0A61qOSE_Bq-3J3eOs8NLvZnxaMJs9DR797R7sam5Q7mK-fNstU5I4de3uLxo8j44MZ84Mq5Pi"
-        ]
+        title: "南浦洞最後採買",
+        description: "地點：富平市場、國際市場。重點：韓式調味料、海苔、補齊所有未買到的伴手禮。",
+        type: "SHOPPING",
+        koreanName: "국제시장"
       },
       {
         time: "15:20",
-        title: "前往金海國際機場 (PUS)",
-        description: "搭乘機場巴士或計程車預留充裕時間。"
+        title: "前往金海機場",
+        description: "交通：建議預約包車或搭乘計程車 (預留塞車時間)。",
+        type: "TRANSPORT"
       },
       {
         time: "16:30",
-        title: "辦理退稅手續",
-        description: "前往 Tax Refund 櫃台或自助機器處理。"
+        title: "機場手續",
+        description: "活動：辦理退稅、領取機場免稅品。",
+        type: "INFO"
       },
       {
         time: "20:00",
-        title: "大韓航空 KE 返程",
-        description: "預計於 22:30 抵達台中國際機場",
-        tags: ["BOARDING"]
+        title: "班機起飛 (大韓航空)",
+        description: "預計 21:40 抵達桃園國際機場。22:30 搭乘預約包車返回台中。",
+        type: "FLIGHT",
+        isHighlight: true
       }
     ]
   }
 };
+
+export interface GourmetSpot {
+  title: string;
+  koreanName: string;
+  description: string;
+  image: string;
+  category: string;
+  location: string;
+}
+
+export const GOURMET_DATA: GourmetSpot[] = [
+  {
+    title: "味贊王鹽烤肉",
+    koreanName: "맛찬들왕소금구이",
+    description: "釜山最知名的厚切豬五花店，專業店員代烤，肉質鮮嫩多汁。建議搭配醃漬菜葉與芥末食用。",
+    image: "https://lh3.googleusercontent.com/aida-public/AB6AXuBQKxgBa4RQI8gGllUkHubwfaiGGFbO1YiKY8EqLsNp4eXoceMjiwb10nbWxP30mtFJxBmB5qO5lKKeMqzw7q8Iui67hljwwlc8OERneE5Zt2TIUF0ZiEn7Yw7yz5ZVKhFlisnqUZT6p_0QIdlP6cSEErGer0YJkkanQKH7kjkmbbeT_GN_Ccqz9Y5NDz7wnvBeq9zmVB3s44dTyJXE1ahqynzwiPTQDhhgvsCff1KVu6x8L7GDBqFIRhccfMwvFQYkWkhfPVVNvNJY",
+    category: "韓式烤肉",
+    location: "海雲台 / 西面"
+  },
+  {
+    title: "密陽豬肉湯飯",
+    koreanName: "밀양돼지국밥",
+    description: "海雲台 24 小時營業的名店，湯頭濃郁不腥，是釜山最具代表性的靈魂美食。記得加入蝦醬與韭菜調味。",
+    image: "https://lh3.googleusercontent.com/aida-public/AB6AXuDmfIEw9wz1MYcnxU47fMRMOM7kcS6KvNuLDqHZ7sbziB395Oclk97n8HEu9Ao_e9ggoGyesmNPBilnextPkjIa4p_Xfa4GoVZctyMeZ1OXbeyRIQS6U4s4rwXsHg8pRCAqrFRaQFgjvis_GeYcydwyIWa6EAhFraL7ZTYZsZ6m2Y-BHi2u47XfdbQcBMfRjOC-PxMq-pxFxCnbsSpWYDWOXYSNe91bip-GwRObubC2Zo4cjIycH2ikiLcDO51tO6hWZ5yb-prZ7ftp",
+    category: "在地小吃",
+    location: "海雲台主街"
+  },
+  {
+    title: "橋村炸雞",
+    koreanName: "교촌치킨",
+    description: "韓國炸雞界的霸主，招牌蜂蜜口味與大蒜醬油口味是必點。外皮酥脆，肉質鮮嫩，配上醃蘿蔔簡直完美。",
+    image: "https://lh3.googleusercontent.com/aida-public/AB6AXuDxV08gf7b_er3kONtPCYxdXZwfARGzIoiMI8kn5bcLqyQ7FPleFNxvfRmOCpe0CkFayc4O1d1Lox1itOqqihxynH6ycDRQSTcpubwCFt6UwxbGokH6XVDLn0t-4l9Xxhay1JE8cNII3y4ce3fUHSn5Mb7W7nNyYoWf6Q0iemCdQZNf-MasMEtajRpfz6co5VmjT_eQDu6a_4fiyVNOWvqf5pNQ3R9oYUvIkjcmi_W3FGFxz7NkC8tyUnpqB0AOfNYvQ2Tu1mh4Ik--",
+    category: "韓式炸雞",
+    location: "全釜山連鎖"
+  },
+  {
+    title: "古思來魚板",
+    koreanName: "고래사어묵",
+    description: "釜山代表性美食，多種口味的現做魚板，也有提供真空包裝伴手禮。推薦起司口味與年糕口味。",
+    image: "https://lh3.googleusercontent.com/aida-public/AB6AXuDmfIEw9wz1MYcnxU47fMRMOM7kcS6KvNuLDqHZ7sbziB395Oclk97n8HEu9Ao_e9ggoGyesmNPBilnextPkjIa4p_Xfa4GoVZctyMeZ1OXbeyRIQS6U4s4rwXsHg8pRCAqrFRaQFgjvis_GeYcydwyIWa6EAhFraL7ZTYZsZ6m2Y-BHi2u47XfdbQcBMfRjOC-PxMq-pxFxCnbsSpWYDWOXYSNe91bip-GwRObubC2Zo4cjIycH2ikiLcDO51tO6hWZ5yb-prZ7ftp",
+    category: "在地小吃",
+    location: "海雲台市場"
+  },
+  {
+    title: "螞蟻家",
+    koreanName: "개미집",
+    description: "必吃的章魚蝦子肥腸鍋 (Nak-Gop-Sae)，香辣下飯，釜山必吃名店。建議點小辣即可，配飯吃非常過癮。",
+    image: "https://lh3.googleusercontent.com/aida-public/AB6AXuBDg9p0hfS8gAJOIUNiCAJAN39CzH2bB0O4Df8Gmvzy_BC_uG50vIHIPGDYSIcZbUwxPRfygM0HnIEMdBqTmF5lB08ugdowApQGNgKSpFJ8hjOa-6fDJ4ehi1HMuIHT5aZtvSx1dEAy4orNsSDNY2f5O0BiYocFKhDfppkgtCnuGLEdTQHh45VNuBwGI_njjuV9MRR-99aacu7eULwXceOGSem9H3Jx0ye9tIhOFjpf7KrJmh-SmF8HKZxGCdhilTPYOOoL3eKtvWyi",
+    category: "鍋物",
+    location: "西面 / 南浦洞"
+  }
+];
+
+export interface InfoItem {
+  title: string;
+  icon: string;
+  content: string;
+  details: string[];
+}
+
+export const INFO_DATA: InfoItem[] = [
+  {
+    title: "住宿總覽",
+    icon: "hotel",
+    content: "本次行程安排兩間飯店，分別位於海雲台與南浦洞。",
+    details: [
+      "3/28 - 4/1 (4晚)：海雲台 Best Western Hotel (海雲台站步行約 5 分鐘)",
+      "4/1 - 4/4 (3晚)：南浦洞 GnB Hotel (富平市場對面)"
+    ]
+  },
+  {
+    title: "換匯資訊",
+    icon: "currency_exchange",
+    content: "建議準備少量韓元現金，其餘使用 WOWPASS 或信用卡。",
+    details: [
+      "WOWPASS: 可在機場或地鐵站機台直接用台幣換匯並儲值。",
+      "Money Box: 南浦洞、海雲台均有分店，匯率通常優於銀行。",
+      "備註: 許多小攤位仍僅收現金，建議隨身攜帶 5-10 萬韓元。"
+    ]
+  },
+  {
+    title: "交通攻略",
+    icon: "directions_bus",
+    content: "釜山交通以地鐵與公車為主，建議使用 WOWPASS 或 T-money。",
+    details: [
+      "WOWPASS: 結合換匯、儲值、付款、交通卡功能，非常方便。",
+      "地鐵: 共有4條主要路線，覆蓋大部分景點。",
+      "公車: 適合前往影島、甘川洞等坡度較大的地區。",
+      "計程車: 釜山計程車費率相對合理，三人以上建議搭乘。"
+    ]
+  },
+  {
+    title: "網卡與通訊",
+    icon: "language",
+    content: "建議事先準備好 eSIM 或實體 SIM 卡。",
+    details: [
+      "eSIM: 無須換卡，隨插即用，適合支援的手機型號。",
+      "漫遊: 台灣各大電信均有提供韓國漫遊方案，穩定度高。",
+      "備註: 記得確認是否已開啟國際漫遊功能。"
+    ]
+  },
+  {
+    title: "退稅說明",
+    icon: "receipt_long",
+    content: "韓國購物滿額可享有退稅優惠。",
+    details: [
+      "額度: 單筆消費滿 30,000 KRW 即可申請。",
+      "現場退稅: 部分百貨或商店可直接扣除稅額。",
+      "機場退稅: 需保留退稅單，在機場機台掃描後領取現金或退回信用卡。"
+    ]
+  }
+];
