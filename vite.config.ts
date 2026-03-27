@@ -6,8 +6,7 @@ import {defineConfig, loadEnv} from 'vite';
 export default defineConfig(({mode}) => {
   const env = loadEnv(mode, '.', '');
   return {
-    // 👇 關鍵：一定要加這一行，網頁才找得到程式碼
-    base: '/pianchengli/', 
+    base: '/pianchengli/', // 👈 這裡！一定要確保有這一行
     plugins: [react(), tailwindcss()],
     define: {
       'process.env.GEMINI_API_KEY': JSON.stringify(env.GEMINI_API_KEY),
